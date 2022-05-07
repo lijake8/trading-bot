@@ -3,8 +3,8 @@ import numpy as np
 import time
 
 
-SEC_KEY = '' # Enter Your Secret Key Here
-PUB_KEY = '' # Enter Your Public Key Here
+SEC_KEY = '9Ke6K5JVuWBEGLq3Fudz0wP0cE7wjyerO09zvoDL' # Enter Your Secret Key Here
+PUB_KEY = 'PKO29S6OJ4436FHMWTGM' # Enter Your Public Key Here
 BASE_URL = 'https://paper-api.alpaca.markets' # This is the base URL for paper trading
 api = tradeapi.REST(key_id= PUB_KEY, secret_key=SEC_KEY, base_url=BASE_URL) # For real trading, don't enter a base_url
 
@@ -37,7 +37,7 @@ while True:
             qty=1,
             side='buy',
             type='market',
-            time_in_force='gtc'
+            time_in_force='gtc' # Good 'til cancelled
         )
         pos_held = True
     elif ma - 0.1 > last_price and pos_held: # If MA is more than 10cents above price, and we already bought
@@ -47,8 +47,8 @@ while True:
             qty=1,
             side='sell',
             type='market',
-            time_in_force='gtc'
+            time_in_force='gtc' # Good 'til cancelled
         )
         pos_held = False
      
-    time.sleep(60)
+    time.sleep(60) # Wait one minute before retreiving more market data
